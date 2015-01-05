@@ -1,38 +1,43 @@
 require './lib/takeaway'
 require './lib/menu'
+require './lib/basket'
 
 describe Takeaway do 
 
-	let(:takeaway){Takeaway.new}
+	let(:takeaway){Takeaway.new menu}
+	let(:menu){Menu.new}
 
 	context 'Pricing' do
 
 		it 'should add up the prices of the dishes on the menu' do
-			expect(takeaway.add_up_menu_price).to eq 11.97
+			expect(menu.add_up_menu_price).to eq 41.96
 		end
 
 	end
 
-	context 'Dishes' do
+	context 'Menu' do
 
-		xit 'should have a list of dishes' do
-			takeaway.list_menu_items
-			expect(takeaway.menu_items).to eq('curry')
+		it 'should have a list of dishes' do
+			expect(menu.list_dishes).to include ['chips']
 		end
 
-		xit 'should check for a specific menu item' do
-			expect(takeaway.check_for_menu_item).to eq('curry')
+		it 'should check for a specific menu item' do
+			expect(menu.check_for_item('chips')).to eq("Yes, in stock")
+		end
+
+		it 'should know if an item is not currently on the menu' do
+			expect(menu.check_for_item('tango')).to eq("No, not currently in stock")
 		end
 
 	end
 
-	# context 'Functionality' do
+	context 'Functionality' do
 
-	# 	it '' do
+		it 'the Takeaway should be able to show a menu' do
+			expect(takeaway.list_menu).to include ['chips']
+		end
 
-	# 	end
-
-	# end
+	end
 
 	
 end
