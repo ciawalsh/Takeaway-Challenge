@@ -1,4 +1,8 @@
+require_relative 'basket'
+
 class Menu
+
+	attr_accessor :basket
 
 	def initialize
 		@dishes = dishes
@@ -34,10 +38,23 @@ class Menu
 		item = @dishes.find { |item| item[:name] == choice } ? true : false
 	end
 
-	# def check_item_price(item)
-		
-	# end
+	def check_item_price(choice)
+		@dishes.find { |item| item[:name] == choice }[:price] rescue "#{choice} not found!"
+	end
 
+	def add_item_to_basket(choice, basket)
+		if item = @dishes.find { |item| item[:name] == choice }
+			basket.add_item(choice)
+		else
+			"#{choice} not found!"
+		end
+	end
+
+	def item_price(choice)
+		if item = @dishes.find { |item| item[:name] == choice }
+			item[:price]
+		end
+	end
 
 end
 

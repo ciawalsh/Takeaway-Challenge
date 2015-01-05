@@ -29,11 +29,33 @@ describe Takeaway do
 			expect(menu.check_for_item('tango')).to eq("No, not currently in stock")
 		end
 
+		it 'should know the price of an item if its on the menu' do
+			expect(menu.check_item_price('chips')).to eq 2.99
+		end
+
+	end
+
+	context 'Basket' do
+
+		it 'should allow an item to be added to it' do
+
+		basket = Basket.new
+		basket.menu = menu
+		takeaway = Takeaway.new menu, basket
+
+		takeaway.add_item('chips', basket)
+		takeaway.add_item('margherita', basket)
+		expect(basket.total).to eq 13.98
+
+		end
+
+
+
 	end
 
 	context 'Functionality' do
 
-		it 'the Takeaway should be able to show a menu' do
+		xit 'the Takeaway should be able to show a menu' do
 			expect(takeaway.list_menu).to include ['chips']
 		end
 
