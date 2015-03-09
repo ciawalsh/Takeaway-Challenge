@@ -1,6 +1,8 @@
 Takeaway Challenge
 ==================
 
+## Makers Week 2 Friday Solo Challenge Part 2
+
 Task
 -----
 
@@ -18,5 +20,7 @@ Task
 
   * However, if my Takeaway is loaded into IRB and the order is placed, the text should actually be sent.
 
+### Technologies Used 
 
-An updated README will follow during the following weeks as the program is updated.
+- Ruby
+- Rspec
